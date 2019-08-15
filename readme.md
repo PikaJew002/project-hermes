@@ -15,4 +15,4 @@ I really needed an exciting/fun project to test my skills in using Laravel's Sch
 
 ## License
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Project Hermes is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
