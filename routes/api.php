@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('/login', 'UserController@login');
-Route::post('/register', 'UserController@register');
-Route::post('/logout', 'UserController@logout');
-Route::get('/auth', 'UserController@getUser')->middleware('auth:sanctum');
+Route::post('login', 'UserController@login');
+Route::post('register', 'UserController@register');
+Route::post('logout', 'UserController@logout');
+Route::get('auth', 'UserController@getUser')->middleware('auth:sanctum');
