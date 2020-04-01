@@ -36,4 +36,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the families where the admin is the user
+     */
+    public function families() {
+        $this->hasMany('App\Family');
+    }
+
+    /**
+     * Get the bills associated with the user
+     */
+    public function bills() {
+        $this->belongsToMany('App\Bill')->withPivot('amount')->withTimestamps();
+    }
+
+    /**
+     * Get the payments belonging to the user
+     */
+    public function payments() {
+        $this->hasMany('App\Payment');
+    }
 }
