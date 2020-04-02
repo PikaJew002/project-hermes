@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Family;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\Family as FamilyResource;
 use Illuminate\Http\Request;
 

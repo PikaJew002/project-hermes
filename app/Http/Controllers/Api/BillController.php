@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Bill;
 use App\User;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\Bill as BillResource;
 use Illuminate\Http\Request;
 

@@ -1,16 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use App\Http\Controllers\Controller;
 use App\User;
 
 class UserController extends Controller
 {
+    /**
+     * Registers a new user
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function register(Request $request) {
         $this->validator($request->all())->validate();
 
@@ -20,6 +27,7 @@ class UserController extends Controller
 
         return response()->json(['user'=> $user, 'message'=> 'registration successful'], 200);
     }
+
     /**
     * Get a validator for an incoming registration request.
     *
@@ -52,22 +60,38 @@ class UserController extends Controller
         return Auth::guard();
     }
 
+    /**
+     * Logs in the user
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function login(Request $request) {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            // Authentication passed...
             return response()->json(['user' => Auth::user(), 'message' => 'Login successful'], 200);
         }
     }
 
+    /**
+     * Gets the currently logged in user
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function getUser(Request $request) {
-      if(Auth::check()) {
-        return response()->json(['user' => Auth::user()], 200);
-      } else {
-        return response()->json(['message' => 'Not logged in'], 403);
-      }
+        if(Auth::check()) {
+            return response()->json(['user' => Auth::user()], 200);
+        } else {
+            return response()->json(['message' => 'Not logged in'], 403);
+        }
     }
 
+    /**
+     * Logs out the current user
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function logout() {
         Auth::logout();
         return response()->json(['message' => 'Logged Out'], 200);

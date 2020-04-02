@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Payment;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\Payment as PaymentResource;
 use Illuminate\Http\Request;
 

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\MonthlyBill;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\MonthlyBill as MonthlyBillResource;
 use Illuminate\Http\Request;
 
@@ -82,7 +83,7 @@ class MonthlyBillController extends Controller
     {
         /* validation */
         $request->validate([
-          'id' => 'required|integer'
+          'id' => 'required|integer',
           'bill_id' => 'required|integer',
           'month' => 'required|string|size:6',
           'amount' => 'required|numeric|between:0.01,99999.99',
