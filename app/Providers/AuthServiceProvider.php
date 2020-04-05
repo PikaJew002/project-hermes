@@ -17,6 +17,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Bill' => 'App\Policies\Bill',
         'App\MonthlyBill' => 'App\Policies\MonthlyBill',
         'App\Payment' => 'App\Policies\Payment',
+        'App\User' => 'App\Policies\User',
     ];
 
     /**
