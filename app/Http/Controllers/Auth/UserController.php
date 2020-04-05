@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Family;
 
 class UserController extends Controller
 {
@@ -34,7 +35,12 @@ class UserController extends Controller
         $this->validator($request->all())->validate();
 
         $user = $this->create($request->all());
-
+        if($request->filled('family_name')) {
+            $family = new Family;
+            $family->admin_id = $user->id;
+            $family->name = $request->input('family_name');
+            $family->save();
+        }
         $this->guard()->login($user);
 
         return response()->json(['user'=> $user, 'message'=> 'registration successful'], 200);
@@ -51,6 +57,7 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'family_name' => ['nullable', 'string', 'max:255'],
           ]);
     }
 
