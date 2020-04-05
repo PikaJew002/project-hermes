@@ -1,6 +1,5 @@
 require('./bootstrap');
 
-import 'bootstrap';
 import Vue from 'vue';
 import router from '@/js/routes.js';
 import store from '@/js/store.js';

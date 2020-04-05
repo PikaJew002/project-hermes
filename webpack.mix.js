@@ -21,4 +21,13 @@ mix.webpackConfig({
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .postCss('resources/css/app.css', 'public/css', [
+      require('tailwindcss'),
+      //  require('@fullhuman/postcss-purgecss')({
+      //   content: [
+      //     './resources/js/pages/*.vue',
+      //     './resources/views/app.blade.php',
+      //   ],
+      //   defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+      // }),
+    ]);
