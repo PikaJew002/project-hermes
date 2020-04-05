@@ -15,8 +15,8 @@ use Illuminate\Http\Request;
 Route::namespace('Auth')->group(function() {
     Route::post('login', 'UserController@login');
     Route::post('register', 'UserController@register');
-    Route::post('logout', 'UserController@logout')->middleware('auth:sanctum');
-    Route::get('auth', 'UserController@getUser')->middleware('auth:sanctum');
+    Route::post('logout', 'UserController@logout');
+    Route::get('auth', 'UserController@getUser');
 });
 Route::namespace('Api')->group(function() {
     Route::apiResources([
