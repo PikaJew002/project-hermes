@@ -28,6 +28,8 @@ Route::namespace('Api')->group(function() {
     Route::post('bill/user', ['as' => 'bill.attachUser', 'uses' => 'BillController@attachUser']);
     Route::match(['put', 'patch'], 'bill/user/{bill}/{user}', ['as' => 'bill.updatePivotUser', 'uses' => 'BillController@updatePivotUser']);
     Route::delete('bill/user/{bill}/{user}', ['as' => 'bill.detachUser', 'uses' => 'BillController@detachUser']);
+
+    Route::get('user/{user}', ['as' => 'user.show', 'uses' => 'UserController@show']);
 });
 
 Route::get('currentroute', function() {
