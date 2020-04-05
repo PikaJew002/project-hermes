@@ -17,7 +17,7 @@
         <!-- Styles -->
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     </head>
-    <body>
+    <body class="bg-gray-200 text-gray-800">
         <div id="app">
           <router-view></router-view>
         </div>

@@ -1,35 +1,33 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="card card-default">
-          <div class="card-header">Login</div>
-          <div class="card-body">
-            <form method="POST" @submit.prevent="handleSubmit()">
-            <div class="form-group row">
-              <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Address</label>
-              <div class="col-md-6">
-                <input id="email" type="email" class="form-control" v-model="email" required autofocus>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-              <div class="col-md-6">
-                <input id="password" type="password" class="form-control" v-model="password" required>
-              </div>
-            </div>
-            <div class="form-group row mb-0">
-              <div class="col-md-8 offset-md-4">
-                <button type="submit" class="btn btn-primary">
-                  Login
-                </button>
-              </div>
-            </div>
-            </form>
-          </div>
-        </div>
+  <div class="py-4 flex-initial max-w-sm mx-auto">
+    <form method="POST" @submit.prevent="handleSubmit()" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+          Email
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+         id="email" type="email" placeholder="Email" v-model="email" required>
       </div>
-    </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+          Password
+        </label>
+        <input :class="{ 'border-red-500': isError }" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+        id="password" type="password" placeholder="Password" v-model="password" required>
+        <p v-if="isError" class="text-red-500 text-xs italic">Please choose a password.</p>
+      </div>
+      <div class="flex items-center justify-between">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+          Sign In
+        </button>
+        <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+          Forgot Password?
+        </a>
+      </div>
+    </form>
+    <p class="text-center text-gray-500 text-xs">
+      &copy;2020 Project Hermes. All rights reserved.
+    </p>
   </div>
 </template>
 
@@ -39,7 +37,12 @@
     data(){
       return {
         email : "",
-        password : ""
+        password : "",
+        isError: false,
+        isAdmin: false,
+        family: {
+          name: ""
+        }
       }
     },
     methods : {
