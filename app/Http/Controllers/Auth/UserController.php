@@ -93,7 +93,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function logout() {
-        Auth::logout();
+        Auth::guard('web')->logout();
         return response()->json(['message' => 'Logged Out'], 200);
     }
 }
